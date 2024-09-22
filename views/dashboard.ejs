@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+         <!-- Logout link -->
+        <h1>Welcome || <a href="/logout" class="btn">Logout</a></h1>
+
+       
+            <!-- Display the error if it exists -->
+            <% if (typeof error !== 'undefined') { %>
+                <div class="error-message"><%= error %></div>
+            <% } %>
+
+
+        <!-- Data submission form -->
+        <section>
+            <!-- <h2>Submit New Data</h2>
+            <form action="/submit" method="POST">
+                <textarea name="data" placeholder="Enter your data here..." required></textarea>
+                <button type="submit" class="btn">Submit Data</button>
+            </form> -->
+            <h1>Household Data Entry Form</h1>
+                <form action="/submit" method="POST">
+                    
+                    <input placeholder="Household Head Name" type="text" name="householdHead" required>
+
+                    
+                    <input placeholder="Number of Family Members" type="number" name="familyMembers" required>
+
+                    
+                    <input placeholder="ITNs Distributed (quantity)" type="number" name="itnsDistributed" required>
+
+                   
+                    <input placeholder="Distribution Date" type="date" name="distributionDate" required>
+
+                    <button type="submit" class="btn">Submit Data</button>
+                </form>
+        </section>
+
+        <!-- Display submitted data -->
+        <section>
+            <h2>Your Entry</h2>
+
+            <% if (submissions.length > 0) { %>
+                <table>
+                    <% submissions.forEach(submission => { %>
+                    <tr>
+                        <td><%= submission.householdHead %></td>
+                        <td><%= submission.familyMembers %></td>
+                        <td><%= submission.itnsDistributed %></td>
+                        <td><%= submission.distributionDate %></td>
+                    </tr>
+                                       
+                    <% }) %>
+                </table> 
+            <% } else { %>
+                <p>No submissions yet.</p>
+            <% } %>
+        </section>
+    </div>
+</body>
+</html>
