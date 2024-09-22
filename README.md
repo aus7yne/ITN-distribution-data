@@ -41,44 +41,13 @@ A Node.js web application that allows users to register, log in, submit househol
 
 4. Run the application:
    ```bash
-   node server.js
+   node app.js
    ```
 
 5. Open your browser and navigate to:
    ```
    http://localhost:3000
    ```
-
----
-
-## Project Structure
-
-```bash
-project-root/
-│
-├── controllers/
-│   ├── userController.js       # Handles user-related operations
-│   ├── submissionController.js  # Handles submission-related operations
-│
-├── routes/
-│   ├── userRoutes.js           # User-related routes (login, register, logout)
-│   ├── submissionRoutes.js      # Submission and API-related routes
-│
-├── views/
-│   ├── register.ejs            # Registration page
-│   ├── login.ejs               # Login page
-│   ├── dashboard.ejs           # Dashboard page displaying submissions
-│
-├── public/
-│   ├── css/
-│       ├── styles.css          # CSS for the front-end
-│
-├── server.js                   # Main server file
-├── app.js                      # Middleware and express configurations
-├── database.js                 # SQLite database connection and schema creation
-└── README.md                   # Project documentation
-```
-
 ---
 
 ## Usage
@@ -135,38 +104,11 @@ Retrieve all household data.
       "householdHead": "John Doe",
       "familyMembers": 4,
       "itnsDistributed": 3,
-      "distributionDate": "2024-09-20",
-      "userId": 1
+      "distributionDate": "2024-09-20"
     }
   ]
 }
 ```
-
----
-
-## Code Overview
-
-### `server.js`
-
-This file initializes the server, configures middleware (such as `express-session` for session management), and imports the routes.
-
-### `controllers/userController.js`
-
-This controller handles:
-- **Registration**: Hashing passwords and inserting users into the database.
-- **Login**: Verifying hashed passwords and creating user sessions.
-- **Logout**: Destroying the session and redirecting users to the homepage.
-
-### `controllers/submissionController.js`
-
-This controller handles:
-- **Data Submission**: Inserting household data into the database.
-- **Data Retrieval**: Fetching submitted data from the database for display on the dashboard or through API endpoints.
-
-### `database.js`
-
-Sets up the SQLite3 database, creating tables for `users` and `submissions` if they do not already exist.
-
 ---
 
 ## Dependencies
@@ -187,34 +129,6 @@ Sets up the SQLite3 database, creating tables for `users` and `submissions` if t
 
 ---
 
-## Known Issues
-
-- Ensure that your session store is secure for production environments. Use `connect-redis` or `connect-mongo` for distributed session stores.
-- The current setup uses SQLite, which is fine for development but may not scale well for large datasets in production.
-
----
-
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Contribution
-
-Feel free to fork this repository, submit issues, or make pull requests. All contributions are welcome!
-
----
-
-## Contact
-
-For any questions or inquiries, please contact [your-email@example.com].
-
----
-
-## Future Improvements
-
-- Implement role-based access controls (admin vs. user).
-- Improve API security with token-based authentication (JWT).
-- Add pagination to the API for large datasets.
-- Set up integration tests for API endpoints.
