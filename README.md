@@ -1,4 +1,4 @@
-# Household Data Management System
+# ITN distribution campaign
 
 A Node.js web application that allows users to register, log in, submit household data, and retrieve this data using an API. The app uses Express.js, SQLite, and EJS for templating, along with session-based user authentication.
 
